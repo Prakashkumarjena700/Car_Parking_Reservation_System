@@ -5,11 +5,26 @@ const requestRoute = express.Router()
 
 requestRoute.get('/', async (req, res) => {
     try {
-        res.send('Here we will see all the request')
+        const requests = await requestModel.find()
+        res.send(requests)
     } catch (err) {
-        res.send('Error')
+        res.send({ "msg": "Not get request", "sucess": false })
         console.log(err)
     }
+})
+
+requestRoute.get('/:user', async (req, res) => {
+    try {
+        const { user } = req.params
+        const userRequest = await requestModel.find({ user })
+
+        res.send(userRequest)
+
+    } catch (err) {
+        res.send({ "msg": "Not get user request", "sucess": false })
+        console.log(err)
+    }
+
 })
 
 requestRoute.post('/create', async (req, res) => {
@@ -20,6 +35,19 @@ requestRoute.post('/create', async (req, res) => {
 
     } catch (err) {
         res.send({ "msg": "Request not created", "sucess": false })
+        console.log(err)
+    }
+})
+
+requestRoute.patch('/update', async (req, res) => {
+    try {
+        const query = req.query
+
+        await requestModel.findByIdAndUpdate({ _id: query.id }, { status: query.status })
+        res.send("Status has been changed")
+
+    } catch (err) {
+        res.send({ "msg": "Request not updated", "sucess": false })
         console.log(err)
     }
 })

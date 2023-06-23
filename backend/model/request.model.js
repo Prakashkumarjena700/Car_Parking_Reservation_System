@@ -4,6 +4,7 @@ const requestSchema = mongoose.Schema({
     userDetails: Object,
     place: String,
     status: String,
+    seaction: String,
     entryDate: String,
     exitDate: String,
     type: String,
