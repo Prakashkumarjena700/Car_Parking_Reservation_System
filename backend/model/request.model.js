@@ -9,6 +9,7 @@ const requestSchema = mongoose.Schema({
     exitDate: String,
     type: String,
     price: Number,
+    review: Array,
     user: String
 })
 
