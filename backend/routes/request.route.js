@@ -52,6 +52,19 @@ requestRoute.patch('/update', async (req, res) => {
     }
 })
 
+requestRoute.delete('/delete/:_id', async (req, res) => {
+    try {
+        const { _id } = req.params
+
+        await requestModel.findByIdAndDelete({ _id })
+        res.send({ 'msg': 'Request has been rejected' })
+
+    } catch (err) {
+        res.send({ "msg": "Request not rejected", "sucess": false })
+        console.log(err)
+    }
+})
+
 module.exports = {
     requestRoute
 }
