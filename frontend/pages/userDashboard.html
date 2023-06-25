@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+    <h2>User Dash board</h2>
+    <div class="dashboardMainContainer">
+        <div>
+            <img src="" alt="" id="userImg">
+            <p onclick="showResult('userProfile')">Profile</p>
+            <p onclick="showResult('bookSlot')">Book Slot</p>
+            <p onclick="showResult('currentSlot')">Current Slot</p>
+            <p onclick="showResult('history')">History</p>
+            <p onclick="Logout()">Logout</p>
+        </div>
+        <div>
+            <div id="userProfile">Profile</div>
+            <div id="bookSlot">
+                <form onsubmit="checkPrice()">
+                    <select id="place">
+                        <option value="">Slot requets for</option>
+                        <option value="Mall">Mall</option>
+                        <option value="Hospital">Hospital</option>
+                        <option value="Airport">Airport</option>
+                        <option value="Railway Station">Railway Station</option>
+                    </select>
+                    <input type="date" id="entryDate">
+                    <input type="date" id="exitDate"> 
+                    <select id="type">
+                        <option value="">Vehicle Type</option>
+                        <option value="2wheeler">2 Wheeler</option>
+                        <option value="4wheeler">4 wheeler</option>
+                    </select>
+                    <input type="text" placeholder="Vehicle Number" id="Vehiclenumber">
+                    <input type="submit" value="Check Price">
+                </form>
+                <button onclick="makeRequestForSlot()">Make request</button>
+
+                <p>Total Price : <span id="total">0.00</span> </p>
+
+            </div>
+            <div id="currentSlot">Current Slot</div>
+            <div id="history">History</div>
+        </div>
+    </div>
+</body>
+<script src="../js/user.js"></script>
+
+</html>

@@ -29,7 +29,7 @@ userRoute.get('/:_id', async (req, res) => {
 })
 
 userRoute.post('/register', async (req, res) => {
-    const { name, email, password, avatar, dob, city, country, drivingExperience, insuranceNumber } = req.body
+    const { name, email, password, avatar, dob, city, country, drivingExperience, insuranceNumber, role } = req.body
     try {
         const user = await userModel.find({ email })
         if (user.length > 0) {
@@ -39,7 +39,7 @@ userRoute.post('/register', async (req, res) => {
                 if (err) {
                     res.send("Something went wrong")
                 } else {
-                    const user = new userModel({ name, email, password: hash, avatar, dob, city, country, drivingExperience, insuranceNumber })
+                    const user = new userModel({ name, email, password: hash, avatar, dob, city, country, drivingExperience, insuranceNumber, role })
                     await user.save()
                     res.send({ "msg": "new user has been register", "sucess": true })
                 }
@@ -59,7 +59,7 @@ userRoute.post('/login', async (req, res) => {
             bcrypt.compare(password, user[0].password, (err, result) => {
                 if (result) {
                     const token = jwt.sign({ userID: user[0]._id }, "carparking")
-                    res.send({ "msg": "Login sucessful", "sucess": true, token, user })
+                    res.send({ "msg": "Login sucessful", "sucess": true, token, user: user[0] })
                 } else {
                     res.send({ "msg": "Wrong crediential", "sucess": false })
                 }

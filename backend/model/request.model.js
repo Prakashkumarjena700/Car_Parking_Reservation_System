@@ -8,6 +8,7 @@ const requestSchema = mongoose.Schema({
     entryDate: String,
     exitDate: String,
     type: String,
+    Vehiclenumber: String,
     price: Number,
     review: Object,
     user: String

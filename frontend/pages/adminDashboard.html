@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+    <h2>Admin Dash board</h2>
+    <div class="dashboardMainContainer">
+        <div>
+            <img src="" alt="" id="adminPic">
+            <p onclick="showResultForAdmin('profile')">Profile</p>
+            <p onclick="showResultForAdmin('requests')">Request</p>
+            <p onclick="showResultForAdmin('slots')">Slots</p>
+            <p onclick="showResultForAdmin('users')">Users</p>
+            <p onclick="Logout()">Logout</p>
+        </div>
+        <div>
+            <div id="profile">Profile</div>
+            <div id="requests">Requests</div>
+            <div id="slots">Slots</div>
+            <div id="users">Users</div>
+        </div>
+    </div>
+</body>
+<script src="../js/admin.js"></script>
+
+</html>

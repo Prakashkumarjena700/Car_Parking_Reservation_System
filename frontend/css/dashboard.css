@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.dashboardMainContainer {
+    border: 1px solid red;
+    height: 300px;
+    display: flex;
+}
+
+.dashboardMainContainer>div:nth-child(1) {
+    width: 20%;
+    border: 1px solid black;
+}
+
+.dashboardMainContainer>div:nth-child(1) img {
+    width: 80%;
+}
+
+.dashboardMainContainer>div:nth-child(1) p {
+    cursor: pointer;
+}
+
+.dashboardMainContainer>div:nth-child(2) {
+    width: 80%;
+    border: 1px solid blue;
+}
