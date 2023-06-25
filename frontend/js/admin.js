@@ -1,4 +1,4 @@
-const baseApi = 'http://localhost:4500'
+const baseApi = 'https://zany-pink-drill-toga.cyclic.app'
 
 const adminDataFromLs = JSON.parse(localStorage.getItem('loggedInUser'))
 
@@ -46,5 +46,9 @@ const showResultForAdmin = (option) => {
 const Logout = () => {
     localStorage.removeItem('loggedInUser')
     alert('Logout successful')
-    window.location.href = 'login.html' 
+    window.location.href = 'login.html'
 }
+
+// const CountAllRequests = async () => {
+//     await fetch(`${baseApi}/`)
+// }

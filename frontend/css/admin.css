@@ -1,0 +1,11 @@
+.AllCounts {
+    border: 1px solid green;
+    width: 79vw;
+}
+
+.AllCounts>div {
+    border: 1px solid pink;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+}
