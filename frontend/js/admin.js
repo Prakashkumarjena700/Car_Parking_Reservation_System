@@ -30,6 +30,7 @@ const showResultForAdmin = (option) => {
         requests.style.display = 'flex'
         slots.style.display = 'none'
         users.style.display = 'none'
+        getallRequest()
     } else if (option === 'slots') {
         profile.style.display = 'none'
         requests.style.display = 'none'
@@ -47,6 +48,16 @@ const Logout = () => {
     localStorage.removeItem('loggedInUser')
     alert('Logout successful')
     window.location.href = 'login.html'
+}
+
+const getallRequest = async () => {
+    await fetch(`${baseApi}/request`, {
+        headers: {
+            'Authorization': adminDataFromLs.token
+        }
+    }).then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
 }
 
 // const CountAllRequests = async () => {
