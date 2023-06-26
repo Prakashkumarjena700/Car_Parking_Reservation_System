@@ -54,4 +54,5 @@ const register = async () => {
                 console.log(err)
             })
     }
+
 }

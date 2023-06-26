@@ -114,26 +114,43 @@
                         <select id="newPlace" onchange="selectPlace()">
                             <option value="">Select place</option>
                             <option value="64965fd6e59a8461f3a85ae0">Mall</option>
-                            <option value="649897f76f9a9c027924db37">Hospital</option>
                             <option value="64967deb187a849555a33eb1">Airport</option>
+                            <option value="649897f76f9a9c027924db37">Hospital</option>
                             <option value="649898066f9a9c027924db3a">Railway Station</option>
                         </select>
-                        <input onclick="wrotSectionName()"  type="text" placeholder="Enter Slot Name" id="newSlotname">
+                        <input onclick="wrotSectionName()" type="text" placeholder="Enter Slot Name" id="newSlotname">
 
-                        <button onclick="MakeNewSection()" id="MakeNewSectionBtn" >Create new section</button>
-
+                        <button onclick="MakeNewSection()" id="MakeNewSectionBtn">Create new section</button>
                     </div>
                     <div>
-                        <p>Mall</p>
-                        <p>Airport</p>
-                        <p>Hsopital</p>
-                        <p>Railway Station</p>
+                        <p onclick="showParticulatSlot('64965fd6e59a8461f3a85ae0')">Mall</p>
+                        <p onclick="showParticulatSlot('64967deb187a849555a33eb1')">Airport</p>
+                        <p onclick="showParticulatSlot('649897f76f9a9c027924db37')">Hsopital</p>
+                        <p onclick="showParticulatSlot('649898066f9a9c027924db3a')">Railway Station</p>
+                    </div>
+                    <div id="particularSlot">
+                        <h2>Particulat slot</h2>
                     </div>
                 </div>
             </div>
-            <div id="users">Users</div>
+            <div id="users">
+                <div>
+                    <p>Avatar</p>
+                    <p>Name</p>
+                    <p>Email</p>
+                    <p>Gender</p>
+                    <p>Phone</p>
+                    <p>City</p>
+                    <p>Country</p>
+                    <p>Experience</p>
+                    <p>Insurance</p>
+                    <p>Delete</p>
+                </div>
+                <div id="usersList" >UserList</div>
+            </div>
         </div>
     </div>
+
 </body>
 <script src="../js/admin.js"></script>
 

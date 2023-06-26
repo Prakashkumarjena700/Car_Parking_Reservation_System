@@ -25,3 +25,20 @@
     border: 1px solid maroon;
     text-align: center;
 }
+
+#users>div:nth-child(1){
+    border: 1px solid rebeccapurple;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+#users>div:nth-child(2){
+    border: 1px solid rgb(70, 153, 51);
+   
+}
+
+#users>div:nth-child(2) div{
+    border: 1px solid hotpink;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}

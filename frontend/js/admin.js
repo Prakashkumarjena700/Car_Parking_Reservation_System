@@ -18,6 +18,8 @@ const filterByStatus = document.getElementById('filterByStatus')
 const newPlace = document.getElementById('newPlace')
 const newSlotname = document.getElementById('newSlotname')
 const MakeNewSectionBtn = document.getElementById('MakeNewSectionBtn')
+const particularSlot = document.getElementById('particularSlot')
+const usersList = document.getElementById('usersList')
 
 
 profile.style.display = 'flex'
@@ -51,6 +53,8 @@ const showResultForAdmin = (option) => {
         requests.style.display = 'none'
         slots.style.display = 'none'
         users.style.display = 'flex'
+        users.style.flexDirection = 'column'
+        showAllUsers()
     }
 }
 
@@ -150,3 +154,95 @@ const MakeNewSection = async () => {
 
 }
 
+const showParticulatSlot = async (id) => {
+    await fetch(`${baseApi}/slot/${id}`, {
+        headers: {
+            'Authorization': adminDataFromLs.token
+        }
+    }).then(res => res.json())
+        .then(res => {
+            appendParticularSlot(res[0])
+        })
+        .catch(err => {
+            alert('Something went wrong')
+            console.log(err)
+        })
+}
+
+const appendParticularSlot = (obj) => {
+    particularSlot.innerHTML = null
+
+    const avelable = document.createElement('div')
+    avelable.innerHTML = `<h2>Avelable Slot</h2>`
+
+    obj.avelableSlot.map((ele) => {
+
+        const section = document.createElement('p')
+
+        section.innerText = ele
+
+        avelable.append(section)
+        particularSlot.append(avelable)
+    })
+
+    const booked = document.createElement('div')
+    booked.innerHTML = `<h2>Booked Slot</h2>`
+
+    obj.bookedSlot.map((ele) => {
+
+        const section = document.createElement('p')
+
+        section.innerText = ele
+
+        booked.append(section)
+        particularSlot.append(booked)
+    })
+
+    const total = document.createElement('div')
+    total.innerHTML = `<h2>Total Slot</h2>`
+
+    obj.totalSlot.map((ele) => {
+
+        const section = document.createElement('p')
+
+        section.innerText = ele
+
+        total.append(section)
+        particularSlot.append(total)
+    })
+
+}
+
+const showAllUsers = async () => {
+    await fetch(`${baseApi}/user`)
+        .then(res => res.json())
+        .then(res => {
+            appendAppUsers(res)
+            console.log(res)
+        })
+        .catch(err => console.log(err))
+}
+
+const appendAppUsers = (arr) => {
+    usersList.innerHTML = null
+
+    arr.map((ele) => {
+        const card = document.createElement('div')
+
+        card.innerHTML = `
+        <img width='20px' src=${ele.avatar} alt=${ele.name} /> 
+        <p>${ele.name}</p>
+        <p>${ele.email.slice(0, 7)}...</p>
+        <p>${ele.gender}</p>
+        <p>${ele.phone}</p>
+        <p>${ele.city}</p>
+        <p>${ele.country}</p>
+        <p>${ele.drivingExperience}</p>
+        <p>${ele.insuranceNumber}</p>
+        <p>Delete</p>
+        `
+
+        usersList.append(card)
+
+    })
+}
