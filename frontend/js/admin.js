@@ -252,6 +252,18 @@ const appendAppUsers = (arr) => {
     })
 }
 
-const deleteUser = (id) => {
-    console.log(id)
+const deleteUser = async (id) => {
+    await fetch(`${baseApi}/user/delete`, {
+        method: 'DELETE',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': adminDataFromLs.token
+        }
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
 }
