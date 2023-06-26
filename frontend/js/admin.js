@@ -239,10 +239,19 @@ const appendAppUsers = (arr) => {
         <p>${ele.country}</p>
         <p>${ele.drivingExperience}</p>
         <p>${ele.insuranceNumber}</p>
-        <p>Delete</p>
         `
+        const deleteBtn = document.createElement('p')
+        deleteBtn.innerText = 'Delete'
+        deleteBtn.addEventListener('click', () => {
+            deleteUser(ele._id)
+        })
 
+        card.append(deleteBtn)
         usersList.append(card)
 
     })
+}
+
+const deleteUser = (id) => {
+    console.log(id)
 }
