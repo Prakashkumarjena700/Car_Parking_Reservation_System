@@ -1,6 +1,5 @@
 .AllCounts {
     border: 1px solid green;
-    width: 79vw;
 }
 
 .AllCounts>div {
@@ -8,4 +7,21 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
+}
+
+
+#requests>div:nth-child(2) {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+
+}
+
+#requests>div:nth-child(3) div {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+#requests>div p {
+    border: 1px solid maroon;
+    text-align: center;
 }

@@ -82,16 +82,55 @@
                         </div>
                     </div>
                 </div>
-                <div></div>
             </div>
             <div id="requests">
+                <select id="filterByStatus" onchange="FilterStatus()">
+                    <option value="">Filter By Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="finished">Finished</option>
+                </select>
+
                 <div>
                     <p>User Id</p>
-                    <p>Vehiclenumber</p>
-                    
+                    <p>Company</p>
+                    <p>Type</p>
+                    <p>Number</p>
+                    <p>Entry</p>
+                    <p>Exit</p>
+                    <p>Place</p>
+                    <p>Status</p>
+                    <p>Approve</p>
+                    <p>Reject</p>
+                </div>
+                <div id="allRequests"></div>
+            </div>
+            <div id="slots">
+                <div>
+                    <h2>Slots</h2>
+                    <div>
+                        <p onclick="showSelectPlace()">Add new section into place</p>
+                        <select id="newPlace" onchange="selectPlace()">
+                            <option value="">Select place</option>
+                            <option value="64965fd6e59a8461f3a85ae0">Mall</option>
+                            <option value="649897f76f9a9c027924db37">Hospital</option>
+                            <option value="64967deb187a849555a33eb1">Airport</option>
+                            <option value="649898066f9a9c027924db3a">Railway Station</option>
+                        </select>
+                        <input onclick="wrotSectionName()"  type="text" placeholder="Enter Slot Name" id="newSlotname">
+
+                        <button onclick="MakeNewSection()" id="MakeNewSectionBtn" >Create new section</button>
+
+                    </div>
+                    <div>
+                        <p>Mall</p>
+                        <p>Airport</p>
+                        <p>Hsopital</p>
+                        <p>Railway Station</p>
+                    </div>
                 </div>
             </div>
-            <div id="slots">Slots</div>
             <div id="users">Users</div>
         </div>
     </div>

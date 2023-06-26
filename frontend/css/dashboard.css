@@ -10,7 +10,7 @@
 }
 
 .dashboardMainContainer>div:nth-child(1) {
-    width: 20%;
+    width: 15%;
     border: 1px solid black;
 }
 
@@ -23,6 +23,10 @@
 }
 
 .dashboardMainContainer>div:nth-child(2) {
-    width: 80%;
+    width: 85%;
     border: 1px solid blue;
+}
+
+.dashboardMainContainer>div:nth-child(2) div {
+    width: 100%;
 }
