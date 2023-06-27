@@ -5,14 +5,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
-    <h1>Welcome</h1>
-    <a href="./pages/login.html">Login</a>
-    <a href="./pages/register.html">Register</a>
-    <a href="./pages/userDashboard.html">User Dashboard</a>
-    <a href="./pages/adminDashboard.html">Admin Dashboard</a>
-</body>
+    <nav class="navbar">
+        <div>
+            <img src="./assets/homeLogo.png" alt="">
+        </div>
+        <div>
+            <a href="./pages/login.html">Login</a>
+            <a href="./pages/register.html">Register</a>
+            <p onclick="gotoDashboard()">Dashboard</p>
+        </div>
+    </nav>
+    <div class="introInSmall" >
+        <h1>EasyPark</h1>
+        <p>"With state-of-the-art security measures in place, our parking facility provides peace of mind, allowing
+            you to confidently leave your vehicle in our care while you go about your day."</p><br>
+        <p>"Located in a prime location, our parking place offers easy accessibility to nearby attractions, making
+            it
+            the perfect choice for both visitors and locals looking for a reliable and convenient parking solution."
+        </p>
+    </div>
+    <div id="mainBackground">
+        <img id="backgroundSrc" alt="">
+    </div>
+    <div class="mainBody">
+        <div>
+            <h2>EasyPark</h2>
+            <p>"With state-of-the-art security measures in place, our parking facility provides peace of mind, allowing
+                you to confidently leave your vehicle in our care while you go about your day."</p><br>
+            <p>"Located in a prime location, our parking place offers easy accessibility to nearby attractions, making
+                it
+                the perfect choice for both visitors and locals looking for a reliable and convenient parking solution."
+            </p>
+        </div>
+        <div>
+            <div class="CarOrBike">
+                <li onclick="showCar()" id='car'>4 Wheeler</li>
+                <li onclick="showBike()" id='bike'>2 Wheeler</li>
+            </div>
+            <div id="carResult">
+                <div>
+                    <h3>4 Wheeler fee</h3>
+                    <span>Per day slot booking fee for 4 wheeler</span>
+                    <div id="listContainer">
+                        <div>
+                            <img src="./assets/mallLogo.jpg" alt="">
+                            <p>Mall</p>
+                            <p>₹ 300.00</p>
+                        </div>
+                        <div>
+                            <img src="./assets/medicalLogo.avif" alt="">
+                            <p>Hospital</p>
+                            <p>₹ 300.00</p>
+                        </div>
+                        <div>
+                            <img src="./assets/airplainLogo.jpg" alt="">
+                            <p>Airport</p>
+                            <p>₹ 500.00</p>
+                        </div>
+                        <div>
+                            <img src="./assets/trainLogo.jpg" alt="">
+                            <p>Railway Station</p>
+                            <p>₹ 350.00</p>
+                        </div>
+                        <div onclick="slotBook()">
+                            <p>Book your slot now</p>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+            <div id="bikeResult">
+                <div>
+                    <h3>2 Wheeler fee</h3>
+                    <span>Per day slot booking fee for 2 wheeler</span>
+                    <div id="listContainer">
+                        <div>
+                            <img src="./assets/mallLogo.jpg" alt="">
+                            <p>Mall</p>
+                            <p>₹ 100.00</p>
+                        </div>
+                        <div>
+                            <img src="./assets/medicalLogo.avif" alt="">
+                            <p>Hospital</p>
+                            <p>₹ 100.00</p>
+                        </div>
+                        <div>
+                            <img src="./assets/airplainLogo.jpg" alt="">
+                            <p>Airport</p>
+                            <p>₹ 200.00</p>
+                        </div>
+                        <div>
+                            <img src="./assets/trainLogo.jpg" alt="">
+                            <p>Railway Station</p>
+                            <p>₹ 150.00</p>
+                        </div>
+                        <div>
+                            <p>Book your slot now</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<script src="./js/index.js"></script>
 </html>

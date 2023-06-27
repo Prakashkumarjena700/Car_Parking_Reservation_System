@@ -5,11 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/registrationAndLogin.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <body>
-    <h1>Register here</h1>
-    <form onsubmit="register()">
+    <nav class="navbar">
+        <div onclick="gotohome()">
+            <img src="../assets/homeLogo.png" alt="">
+        </div>
+        <div>
+            <a href="./login.html">Login</a>
+            <p onclick="gotoDashboard()">Dashboard</p>
+        </div>
+    </nav>
+    <div id="loading">
+        <img src="../assets/loading.gif" alt="">
+    </div>
+    <form class="form registerForm" onsubmit="register()">
+        <h1>Register</h1>
         <input type="text" placeholder="Name" id="name">
         <input type="email" placeholder="Email" id="email">
         <select id="gender">
@@ -18,17 +32,17 @@
             <option value="male">Women</option>
             <option value="others">Others</option>
         </select>
-        <input type="password" id="password" placeholder="Password" >
         <input type="date" id="dob">
-        <input type="number" id="phone" placeholder="Phone" >
+        <input type="password" id="password" placeholder="Password">
+        <input type="number" id="phone" placeholder="Phone">
         <input type="text" placeholder="City" id="city">
         <input type="text" placeholder="Country" id="country">
         <input type="number" placeholder="Driving Experience" id="drivingExperience">
         <input type="text" placeholder="Insurance Number" id="insuranceNumber">
         <input type="submit" value="Register">
+        <p>Already have an account ? <a href="./login.html">Login</a></p>
     </form>
 </body>
 <script src="../js/register.js"></script>
 
 </html>
-

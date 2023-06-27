@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+nav {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+
+}
+
+nav div a,
+p {
+    text-decoration: none;
+    font-size: large;
+    font-weight: 700;
+    color: #252B3C;
+    cursor: pointer;
+}
+
+nav a:hover {
+    color: skyblue;
+    transition: all 500ms;
+}
+
+nav p:hover {
+    color: skyblue;
+    transition: all 500ms;
+}
+
+nav>div {
+    width: 50%;
+}
+
+nav>div:nth-child(1) img {
+    width: 40%;
+    cursor: pointer;
+}
+
+nav>div:nth-child(2) {
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mainBody {
+    /* border: 1px solid green; */
+    height: 600px;
+    display: flex;
+    /* background-image: url('../assets/carBackground.jpg'); */
+    background-size: cover;
+    padding-right: 10%;
+    justify-content: space-between;
+}
+
+
+.mainBody>div {
+    /* border: 1px solid rgb(128, 81, 0); */
+}
+
+.mainBody>div:nth-child(1) {
+    width: 34%;
+    border-top-right-radius: 60%;
+    border-bottom-right-radius: 60%;
+    text-align: center;
+    padding: 30px;
+    background-color: skyblue;
+}
+
+.mainBody>div:nth-child(1) h2 {
+    margin-top: 100px;
+    text-align: left;
+    font-size: xx-large;
+    margin-bottom: 30px;
+}
+
+.mainBody>div:nth-child(1) p {
+    text-align: left;
+    font-weight: 100;
+    font-size: medium;
+    width: 90%;
+    color: white;
+}
+
+.mainBody>div:nth-child(2) {
+    width: 50%;
+}
+
+.CarOrBike {
+    /* border: 1px solid red; */
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px 0px;
+    margin-bottom: 20px;
+}
+
+.CarOrBike li {
+    /* border: 1px solid green; */
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+#mainBackground img {
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    height: 600px;
+}
+
+#carResult {
+    flex-direction: column;
+}
+
+#bikeResult {
+    flex-direction: column;
+}
+
+#carResult h3 {
+    color: white;
+    font-size: xx-large;
+}
+
+#bikeResult h3 {
+    color: white;
+    font-size: xx-large;
+}
+
+#carResult span {
+    color: white;
+    font-weight: 100;
+    font-size: small;
+}
+
+#bikeResult span {
+    color: white;
+    font-weight: 100;
+    font-size: small;
+}
+
+#listContainer {
+    /* border: 1px solid white; */
+    margin-top: 20px;
+}
+
+#listContainer>div {
+    /* border: 1px solid green; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: rgba(255, 255, 255, 0.795);
+    margin-bottom: 20px;
+    border-radius: 50px;
+    height: 50px;
+    padding: 10px;
+}
+
+#listContainer>div img {
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+#listContainer>div p {
+    color: black;
+    font-size: medium;
+    padding: 15px;
+}
+
+#listContainer>div:last-child {
+    display: flex;
+    justify-content: center;
+    background-color: skyblue;
+    cursor: pointer;
+    color: white;
+}
+
+.introInSmall {
+    display: none;
+}
+
+@media (max-width:821px) {
+
+    nav div a,
+    p {
+        font-size: small;
+    }
+
+    #listContainer>div p {
+        font-size: small;
+    }
+
+    #listContainer>div {
+        height: 40px;
+    }
+
+    #listContainer>div img {
+        height: 40px;
+    }
+
+    .mainBody>div:nth-child(1) h2 {
+        margin-top: 50px;
+    }
+
+    .CarOrBike li {
+        font-size: small;
+    }
+}
+
+@media (max-width:550px) {
+    .navbar>div:nth-child(1) img {
+        width: 80%;
+    }
+
+    .navbar>div:nth-child(2) {
+        gap: 20px;
+        padding-right: 10%;
+        font-size: smaller;
+    }
+
+    .mainBody>div:nth-child(1) {
+        display: none;
+    }
+
+    .mainBody>div:nth-child(2) {
+        width: 80%;
+        margin: auto;
+    }
+
+    .mainBody {
+        flex-direction: column;
+        padding-right: 0px;
+    }
+
+    .introInSmall {
+       display: flex;
+       flex-direction: column;
+       padding: 20px;
+       text-align: center;
+       background-color: skyblue;
+       color: white;
+    }
+    .introInSmall p{
+        color: white;
+    }
+    .introInSmall h1{
+        margin-bottom: 10px;
+        color: black;
+    }
+
+}
+
+@media (max-width:380px) {
+    #listContainer>div p {
+        font-size: 10px;
+    }
+
+}

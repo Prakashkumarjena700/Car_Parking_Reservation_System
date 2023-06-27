@@ -1,5 +1,8 @@
 const baseApi = 'https://zany-pink-drill-toga.cyclic.app'
 
+const loading = document.getElementById('loading')
+loading.style.display = 'none'
+
 const register = async () => {
     event.preventDefault()
 
@@ -13,6 +16,7 @@ const register = async () => {
     const country = document.getElementById('country').value
     const drivingExperience = Number(document.getElementById('drivingExperience').value)
     const insuranceNumber = document.getElementById('insuranceNumber').value
+
 
     const registerObj = {
         name,
@@ -32,6 +36,7 @@ const register = async () => {
     if (name == '' || email == '' || gender == '' || password == '' || dob == '' || phone == '' || city == '' || country == '' || drivingExperience == '' || insuranceNumber == '') {
         alert('Please fill all the details')
     } else {
+        loading.style.display = 'flex'
         await fetch(`${baseApi}/user/register`, {
             method: 'POST',
             headers: {
@@ -40,6 +45,7 @@ const register = async () => {
             body: JSON.stringify(registerObj)
         }).then(res => res.json())
             .then(res => {
+                loading.style.display = 'none'
                 if (res.sucess) {
                     alert('Register successful')
                     window.location.href = './login.html'
@@ -50,9 +56,14 @@ const register = async () => {
                 console.log(res)
             })
             .catch(err => {
+                loading.style.display = 'none'
                 alert('Something went wrong')
                 console.log(err)
             })
     }
 
+}
+
+const gotohome = () => {
+    window.location.href = '../index.html'
 }

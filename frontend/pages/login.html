@@ -5,14 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/registrationAndLogin.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <body>
-    <h2>Login here</h2>
-    <form onsubmit="login()">
+    <nav class="navbar">
+        <div onclick="gotohome()" >
+            <img src="../assets/homeLogo.png" alt="">
+        </div>
+        <div>
+            <a href="./register.html">Register</a>
+            <p onclick="gotoDashboard()">Dashboard</p>
+        </div>
+    </nav>
+    <div id="loading">
+        <img src="../assets/loading.gif" alt="">
+    </div>
+    <form class="form" onsubmit="login()">
+        <h1>Login</h1>
         <input type="email" placeholder="Email" id="email">
         <input type="password" placeholder="Password" id="password">
-        <input type="submit" value="Login">
+        <input type="submit" id="sibmit" value="Login">
+        <p>Don't have an account ? <a href="./register.html">Register</a> </p>
     </form>
 </body>
 <script src="../js/login.js"></script>

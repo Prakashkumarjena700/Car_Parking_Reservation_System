@@ -10,7 +10,17 @@
 </head>
 
 <body>
-    <h2>Admin Dash board</h2>
+    <div id="phonAdminOption">
+        <img src="" alt="" id="adminPicmobile">
+        <p onclick="showResultForAdmin('profile')">Profile</p>
+        <p onclick="showResultForAdmin('requests')">Request</p>
+        <p onclick="showResultForAdmin('slots')">Slots</p>
+        <p onclick="showResultForAdmin('users')">Users</p>
+        <p onclick="Logout()">Logout</p>
+    </div>
+    <div id="loading">
+        <img src="../assets/loading.gif" alt="">
+    </div>
     <div class="dashboardMainContainer">
         <div>
             <img src="" alt="" id="adminPic">
@@ -23,94 +33,151 @@
         <div>
             <div id="profile">
                 <div>
-                    <h1>Admin Name</h1>
-                    <p>admin@gmail.com</p>
+                    <div class="userIntro">
+                        <img onclick="gotoHome()" src="../assets/homeLogo.png" alt="">
+                        <div>
+                            <h1 id="adminName">Admin Name</h1>
+                            <p id="adminMale">admin@gmail.com</p>
+                        </div>
+                    </div>
                     <div class="AllCounts">
-                        <h2>Requests</h2>
-                        <div>
+                        <h2>All Requests</h2>
+                        <div class="allRequests">
                             <div>
-                                <p id="pendingCount">pending </p>
+                                <div>
+                                    <img src="../assets/pendingLogo.png" alt="">
+                                </div>
+                                <div>
+                                    <p>Pending </p>
+                                    <span id="pendingReqCount">Fetching...</span>
+                                </div>
                             </div>
                             <div>
-                                <p id="conformedCount">conformed </p>
+                                <div>
+                                    <img src="../assets/confrLogo.png" alt="">
+                                </div>
+                                <div>
+                                    <p>conformed </p>
+                                    <span id="conformedCount">Fetching...</span>
+                                </div>
                             </div>
                             <div>
-                                <p id="rejectedCount">rejected </p>
+                                <div>
+                                    <img src="../assets/compLogo.avif" alt="">
+                                </div>
+                                <div>
+                                    <p>Compleated</p>
+                                    <span id="compleatedCount">Fetching...</span>
+                                </div>
                             </div>
                             <div>
-                                <p id="compleatedCount">Compleated </p>
+                                <div>
+                                    <img src="../assets/totalSlotLogo.png" alt="">
+                                </div>
+                                <div>
+                                    <p>Total</p>
+                                    <span id="totalReqCount">Fetching...</span>
+                                </div>
                             </div>
                         </div>
-                        <h2>Slots</h2>
-                        <div>
+                        <h2>All Slots</h2>
+                        <div id="allTotalSlotProfile">
                             <div>
-                                <p>Mall</p>
+                                <div>
+                                    <img src="../assets/mallLogo.jpg" alt="">
+                                </div>
+                                <div>
+                                    <p>Mall</p>
+                                    <span id="totalMallSlot">Fetching...</span>
+                                </div>
                             </div>
                             <div>
-                                <p>Hospital</p>
+                                <div>
+                                    <img src="../assets/medicalLogo.avif" alt="">
+                                </div>
+                                <div>
+                                    <p>Hospital</p>
+                                    <span id="totalHospitalSlot">Fetching...</span>
+                                </div>
                             </div>
                             <div>
-                                <p>Airport</p>
+                                <div>
+                                    <img src="../assets/airplainLogo.jpg" alt="">
+                                </div>
+                                <div>
+                                    <p>Airport</p>
+                                    <span id="totalAirportSlot">Fetching...</span>
+                                </div>
                             </div>
                             <div>
-                                <p>Railway Station</p>
+                                <div>
+                                    <img src="../assets/trainLogo.jpg" alt="">
+                                </div>
+                                <div>
+                                    <p>Railway Station</p>
+                                    <span id="totalRsSlot">Fetching...</span>
+                                </div>
                             </div>
                         </div>
-                        <h2>Users</h2>
-                        <div>
+                        <h2>All Users</h2>
+                        <div class="allUsers">
                             <div>
-                                <img width="100px" src="https://cdn-icons-png.flaticon.com/512/552/552721.png" alt="">
-                                <p>USer1</p>
-                                <p>user1@gmail.com</p>
+                                <img src="https://cdn-icons-png.flaticon.com/512/552/552721.png" alt="">
+                                <p>Akash Kumar</p>
+                                <p>akashkumar@gmail.com</p>
                             </div>
                             <div>
-                                <img width="100px" src="https://cdn-icons-png.flaticon.com/512/552/552721.png" alt="">
-                                <p>USer1</p>
-                                <p>user1@gmail.com</p>
+                                <img src="https://cdn-icons-png.flaticon.com/512/552/552721.png" alt="">
+                                <p>Rakesh Roy</p>
+                                <p>rakeshroy@gmail.com</p>
                             </div>
                             <div>
-                                <img width="100px" src="https://cdn-icons-png.flaticon.com/512/552/552721.png" alt="">
-                                <p>USer1</p>
-                                <p>user1@gmail.com</p>
+                                <img src="https://cdn-icons-png.flaticon.com/512/552/552721.png" alt="">
+                                <p>Aman Dey</p>
+                                <p>amandey@gmail.com</p>
                             </div>
-                            <div>
-                                <img width="100px"
-                                    src="https://www.freeiconspng.com/uploads/blue-right-arrow-icon-20.png" alt="">
-                                <p>USer1</p>
-                                <p>user1@gmail.com</p>
+                            <div onclick="showResultForAdmin('users')" style="cursor: pointer;">
+                                <img src="../assets/arrow.png" alt="">
+                                <p>More</p>
+                                <p>Users</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div id="requests">
+                <div class="userIntro">
+                    <div>
+                        <h2 class="slotIntro"> <img onclick="gotoHome()" src="../assets/homeLogo.png" alt="">Requests</h2>
+                    </div>
+                </div>
                 <select id="filterByStatus" onchange="FilterStatus()">
                     <option value="">Filter By Status</option>
                     <option value="pending">Pending</option>
-                    <option value="rejected">Rejected</option>
                     <option value="confirmed">Confirmed</option>
                     <option value="finished">Finished</option>
                 </select>
-
                 <div>
                     <p>User Id</p>
-                    <p>Company</p>
                     <p>Type</p>
-                    <p>Number</p>
                     <p>Entry</p>
                     <p>Exit</p>
                     <p>Place</p>
+                    <p>Section</p>
                     <p>Status</p>
+                    <p>Finished</p>
                     <p>Approve</p>
-                    <p>Reject</p>
+                    <p>Delete</p>
                 </div>
-                <div id="allRequests"></div>
+                <div id="allRequests">
+                    Loading...
+                </div>
             </div>
             <div id="slots">
-                <div>
-                    <h2>Slots</h2>
-                    <div>
-                        <p onclick="showSelectPlace()">Add new section into place</p>
+                <div class="slotContainer">
+                    <h2 class="slotIntro"> <img onclick="gotoHome()" src="../assets/homeLogo.png" alt=""> Slots</h2>
+                    <div class="slotGenereter">
+                        <p onclick="showSelectPlace()">Add new section into place +</p>
                         <select id="newPlace" onchange="selectPlace()">
                             <option value="">Select place</option>
                             <option value="64965fd6e59a8461f3a85ae0">Mall</option>
@@ -122,18 +189,22 @@
 
                         <button onclick="MakeNewSection()" id="MakeNewSectionBtn">Create new section</button>
                     </div>
-                    <div>
+                    <div class="showAvelablitySlotOption">
                         <p onclick="showParticulatSlot('64965fd6e59a8461f3a85ae0')">Mall</p>
                         <p onclick="showParticulatSlot('64967deb187a849555a33eb1')">Airport</p>
-                        <p onclick="showParticulatSlot('649897f76f9a9c027924db37')">Hsopital</p>
+                        <p onclick="showParticulatSlot('649897f76f9a9c027924db37')">Hospital</p>
                         <p onclick="showParticulatSlot('649898066f9a9c027924db3a')">Railway Station</p>
                     </div>
                     <div id="particularSlot">
-                        <h2>Particulat slot</h2>
+                        <h2 class="waitingForClick">Click a particulat slot to see the Availability, Booked and Total
+                        </h2>
                     </div>
                 </div>
             </div>
             <div id="users">
+                <div>
+                    <h2 class="slotIntro"> <img onclick="gotoHome()" src="../assets/homeLogo.png" alt="">Users</h2>
+                </div>
                 <div>
                     <p>Avatar</p>
                     <p>Name</p>
@@ -146,7 +217,7 @@
                     <p>Insurance</p>
                     <p>Delete</p>
                 </div>
-                <div id="usersList" >UserList</div>
+                <div id="usersList">UserList</div>
             </div>
         </div>
     </div>
