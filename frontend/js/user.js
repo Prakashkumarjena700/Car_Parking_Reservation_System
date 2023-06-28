@@ -18,6 +18,20 @@ const type = document.getElementById('type')
 const Vehiclenumber = document.getElementById('Vehiclenumber')
 const total = document.getElementById('total')
 
+const userName = document.getElementById('userName')
+const userMale = document.getElementById('userMale')
+const gender = document.getElementById('gender')
+const phone = document.getElementById('phone')
+const insuranceNumber = document.getElementById('insuranceNumber')
+const drivingExperience = document.getElementById('drivingExperience')
+const dob = document.getElementById('dob')
+const city = document.getElementById('city')
+const country = document.getElementById('country')
+
+const SlotContainerResult = document.getElementById('SlotContainerResult')
+
+const loading = document.getElementById('loading')
+
 
 const currentDate = new Date();
 const minDate = currentDate.toISOString().split("T")[0]
@@ -28,6 +42,8 @@ userProfile.style.display = 'none'
 history.style.display = 'none'
 currentSlot.style.display = 'none'
 
+loading.style.display = 'none'
+
 
 console.log(userDataFromLs)
 
@@ -36,17 +52,18 @@ userImg.src = userDataFromLs.user.avatar
 
 
 const showResult = (option) => {
-
     if (option === 'userProfile') {
         userProfile.style.display = 'flex'
         bookSlot.style.display = 'none'
         history.style.display = 'none'
         currentSlot.style.display = 'none'
+        getUserData()
     } else if (option === 'bookSlot') {
         history.style.display = 'none'
         currentSlot.style.display = 'none'
         userProfile.style.display = 'none'
         bookSlot.style.display = 'flex'
+        bookSlot.style.flexDirection = 'column'
     } else if (option === 'history') {
         history.style.display = 'flex'
         userProfile.style.display = 'none'
@@ -57,9 +74,10 @@ const showResult = (option) => {
         history.style.display = 'none'
         userProfile.style.display = 'none'
         bookSlot.style.display = 'none'
-        CurrentSlot()
+        getallRequest()
     }
 }
+
 
 const Logout = () => {
     localStorage.removeItem('loggedInUser')
@@ -111,6 +129,18 @@ const checkPrice = () => {
 
 }
 
+const getUserData = () => {
+    userName.innerText = userDataFromLs.user.name
+    userMale.innerText = userDataFromLs.user.email
+    gender.innerText = userDataFromLs.user.gender
+    phone.innerText = userDataFromLs.user.phone
+    insuranceNumber.innerText = userDataFromLs.user.insuranceNumber
+    drivingExperience.innerText = userDataFromLs.user.drivingExperience
+    dob.innerText = userDataFromLs.user.dob
+    city.innerText = userDataFromLs.user.city
+    country.innerText = userDataFromLs.user.country
+}
+
 const makeRequestForSlot = async () => {
     const EntryDate = new Date(entryDate.value);
     const ExitDate = new Date(exitDate.value);
@@ -126,6 +156,9 @@ const makeRequestForSlot = async () => {
     } else if (days == 0) {
         alert('Make your booking at list 1 day')
     } else {
+
+        loading.style.display = 'flex'
+
         if (type.value == '2wheeler') {
             if (place.value == 'Mall') {
                 totalfee = 100 * days
@@ -175,6 +208,7 @@ const makeRequestForSlot = async () => {
     }).then(res => res.json())
         .then(res => {
             if (res.sucess) {
+                loading.style.display = 'none'
                 alert('Request sent please wait for conformation')
             } else {
                 alert('Something went wrong')
@@ -182,20 +216,68 @@ const makeRequestForSlot = async () => {
             console.log(res)
         })
         .catch(err => {
+            loading.style.display = 'none'
             console.log(err)
             alert('Something went wrong')
         })
 
 }
 
-const CurrentSlot = async () => {
+const getallRequest = async () => {
+    loading.style.display = 'flex'
     await fetch(`${baseApi}/request/${userDataFromLs.user._id}`, {
         headers: {
-            'Content-type': 'application/json',
             'Authorization': userDataFromLs.token
         }
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res)
+            appendRequest(res)
+            loading.style.display = 'none'
+        })
+        .catch(err => {
+            loading.style.display = 'none'
+            console.log(err)
+        })
+}
+
+const appendRequest = (arr) => {
+    SlotContainerResult.innerHTML = null
+
+    arr.map((ele) => {
+        const card = document.createElement('div')
+
+        card.innerHTML = `
+             <p>${ele.type}</p>
+             <p>${ele.Vehiclenumber}</p>
+             <p>${ele.place}</p>
+             <p>${ele.entryDate}</p>
+             <p>${ele.exitDate}</p>
+             <p>₹ ${ele.price}.00</p>
+             <p>${ele.seaction}</p>
+             <p>${ele.status}</p>
+        `
+
+        const editBtm = document.createElement('img')
+        editBtm.setAttribute('src', '../assets/editLogo.png')
+        editBtm.addEventListener('click', () => {
+            EditSlot(ele._id, ele.status)
+        })
+
+        card.append(editBtm)
+        SlotContainerResult.append(card)
     })
-        .then(res => res.json())
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+
+}
+
+const gotoHome = () => {
+    window.location.href = '../index.html'
+}
+
+const EditSlot = (id, status) => {
+    if (status === 'pending') {
+        console.log(id, status)
+    } else {
+        alert(`Sorry you can only edit your request if it's pending`)
+    }
 }

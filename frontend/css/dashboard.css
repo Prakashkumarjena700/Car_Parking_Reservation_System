@@ -5,7 +5,7 @@
 }
 
 .dashboardMainContainer {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     /* height: 300px; */
     display: flex;
 }
@@ -19,6 +19,8 @@
     flex-direction: column;
     align-items: center;
     /* height: 93vh; */
+    position: fixed;
+    height: 100%;
 }
 
 .dashboardMainContainer>div:nth-child(1) p {
@@ -45,8 +47,9 @@
 
 .dashboardMainContainer>div:nth-child(2) {
     width: 85%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     padding: 10px;
+    margin-left: 15%;
 }
 
 .dashboardMainContainer>div:nth-child(2) h1 {
@@ -72,4 +75,12 @@
 
 .userIntro {
     display: flex;
+}
+
+@media (max-width:830px) {
+    .dashboardMainContainer>div:nth-child(2) {
+        margin-left: 0;
+        margin-top: 80px;
+    }
+   
 }

@@ -88,7 +88,7 @@ const adminProfile = async () => {
             console.log(res)
             totalReqCount.innerText = res.length
 
-            const pending = res.filter((ele) => {
+            const pending = res && res.filter((ele) => {
                 return ele.status == 'pending'
             })
 
@@ -161,6 +161,7 @@ const Logout = () => {
 }
 
 const getallRequest = async () => {
+    loading.style.display = 'flex'
     await fetch(`${baseApi}/request`, {
         headers: {
             'Authorization': adminDataFromLs.token
@@ -168,9 +169,13 @@ const getallRequest = async () => {
     }).then(res => res.json())
         .then(res => {
             console.log(res)
-            appendRequests(res)
+            loading.style.display = 'none'
+            res && appendRequests(res)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            loading.style.display = 'none'
+            console.log(err)
+        })
 }
 
 const appendRequests = (arr) => {
@@ -217,11 +222,57 @@ const appendRequests = (arr) => {
 }
 
 const CompleatedSlot = async (ele) => {
-    const userId = ele.user
+    loading.style.display = 'flex'
 
-    const slotName = getID(ele.place)
+    const reqId = ele._id
 
-    console.log(userId, slotName)
+    const slotId = getID(ele.place)
+
+    const payload = {
+        seaction: "...",
+        status: 'finished'
+    }
+
+    await fetch(`${baseApi}/request/update/${reqId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': adminDataFromLs.token
+        },
+        body: JSON.stringify(payload)
+    }).then(res => res.json())
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+            alert('Something went wrong')
+        })
+
+    let updateSlot = {
+        removeSlotName: ele.seaction
+    }
+
+    await fetch(`${baseApi}/slot/end/${slotId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': adminDataFromLs.token
+        },
+        body: JSON.stringify(updateSlot)
+    }).then(res => res.json())
+        .then(res => {
+            alert('Booking compleated')
+            loading.style.display = 'none'
+            getallRequest()
+            console.log(res)
+        })
+        .catch(err => {
+            alert('Something went wrong')
+            loading.style.display = 'none'
+            console.log(err)
+        })
+
 
 }
 
@@ -276,15 +327,22 @@ const approveModal = async (payload) => {
         .then(res => {
             let arr = res[0].avelableSlot
 
+            const aveleblity = document.createElement('div')
+            aveleblity.setAttribute('id', 'avelablitySections')
+
             arr && arr.map((ele) => {
                 const section = document.createElement('p')
 
+
                 section.innerText = ele
+
                 section.addEventListener('click', () => {
                     approveSlot(payload._id, ele, payload.place)
                 })
 
-                showAvelableSlots.append(section)
+                aveleblity.append(section)
+
+                showAvelableSlots.append(aveleblity)
             })
 
         })
@@ -296,8 +354,8 @@ const approveModal = async (payload) => {
 
     modalContent.appendChild(closeBtn);
     modalContent.appendChild(modalTitle);
-    modalContent.appendChild(showAvelableSlots);
     modalContent.appendChild(modalBody);
+    modalContent.appendChild(showAvelableSlots);
     modal.appendChild(modalContent);
 
     document.body.appendChild(modal);
@@ -327,7 +385,7 @@ const closeModal = () => {
 };
 
 const approveSlot = async (id, sec, name) => {
-
+    loading.style.display = 'flex'
     const payload = {
         seaction: sec,
         status: 'confirmed'
@@ -365,20 +423,46 @@ const approveSlot = async (id, sec, name) => {
     }).then(res => res.json())
         .then(res => {
             console.log(res)
+            loading.style.display = 'none'
             alert(res.msg)
             getallRequest()
             closeModal()
         })
         .catch(err => {
+            loading.style.display = 'none'
             console.log(err)
         })
 
 }
 
-const FilterStatus = () => {
+const FilterStatus = async () => {
+    loading.style.display = 'flex'
     const val = filterByStatus.value
 
-    console.log(val)
+    if (val == '') {
+        getallRequest()
+    } else {
+        await fetch(`${baseApi}/request`, {
+            headers: {
+                'Authorization': adminDataFromLs.token
+            }
+        }).then(res => res.json())
+            .then(res => {
+
+                const filteredRequest = res && res.filter((ele) => {
+                    return ele.status == val
+                })
+
+                res && appendRequests(filteredRequest)
+                loading.style.display = 'none'
+
+            })
+            .catch(err => {
+                loading.style.display = 'none'
+                console.log(err)
+            })
+    }
+
 }
 
 const showSelectPlace = () => {
@@ -505,13 +589,18 @@ const appendParticularSlot = (obj) => {
 }
 
 const showAllUsers = async () => {
+    loading.style.display = 'flex'
     await fetch(`${baseApi}/user`)
         .then(res => res.json())
         .then(res => {
+            loading.style.display = 'none'
             appendAppUsers(res)
             console.log(res)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            loading.style.display = 'none'
+            console.log(err)
+        })
 }
 
 const appendAppUsers = (arr) => {

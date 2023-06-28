@@ -1,0 +1,174 @@
+#userProfile {
+    /* border: 1px solid red; */
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.aboutUser {
+    /* border: 1px solid green; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.aboutUser>div {
+    border-bottom: 1px solid skyblue;
+    display: flex;
+    align-items: center;
+}
+
+.aboutUser>div>div:nth-child(1) {
+    width: 10%;
+}
+
+.aboutUser>div>div:nth-child(1) img {
+    width: 60%;
+
+}
+
+.aboutUser>div p:nth-child(1) {
+    color: #073EA5;
+    font-weight: 700;
+    font-size: large;
+}
+
+.createRequets {
+    /* border: 1px solid red; */
+    margin-top: 20px;
+    /* flex-direction: column; */
+}
+
+.dashboardMainContainer>div:nth-child(2) div .createRequets>div {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 50%;
+    margin: auto;
+    padding: 30px;
+    outline: none;
+    border-radius: 5px;
+}
+
+.createRequets input {
+    width: 99.9%;
+    height: 40px;
+    margin-bottom: 10px;
+    outline: none;
+    font-size: medium;
+    padding-left: 10px;
+}
+
+.createRequets input[type='text'] {
+    width: 97%;
+    padding-left: 10px;
+
+}
+
+.createRequets input[type='date'] {
+    width: 97%;
+}
+
+
+.createRequets select {
+    width: 99.9%;
+    height: 40px;
+    margin-bottom: 10px;
+    font-size: medium;
+    padding-left: 10px;
+}
+
+.createRequets button {
+    width: 100%;
+    height: 40px;
+    background-color: #073EA5;
+    color: white;
+    border: none;
+    font-weight: 700;
+    font-size: medium;
+}
+
+.createRequets button:hover {
+    background-color: white;
+    color: #073EA5;
+    border: 1px solid #073EA5;
+    transition: all 700ms;
+    cursor: pointer;
+}
+
+.createRequets input[type='submit'] {
+    background-color: #073EA5;
+    color: white;
+    border: none;
+    font-weight: 700;
+    font-size: medium;
+}
+
+.createRequets input[type='submit']:hover {
+    background-color: white;
+    color: #073EA5;
+    border: 1px solid #073EA5;
+    transition: all 700ms;
+    cursor: pointer;
+}
+
+.createRequets h2 {
+    text-align: center;
+    color: skyblue;
+    margin-top: 30px;
+}
+
+.createRequets span {
+    color: #073EA5;
+}
+
+#loading {
+    /* border: 1px solid red; */
+    position: absolute;
+    width: 100%;
+    opacity: 0.4;
+    left: 0;
+    right: 0;
+    top: 0;
+    justify-content: center;
+    height: 100%;
+    background-color: #FFFFFF;
+    z-index: 10;
+}
+
+.slotIntroLogo {
+    /* border: 1px solid rebeccapurple; */
+    display: flex;
+    align-items: center;
+    color: #073EA5;
+}
+
+.slotIntroLogo img {
+    width: 200px;
+    cursor: pointer;
+}
+
+#currentSlot {
+    flex-direction: column;
+}
+
+#SlotContainer>div:nth-child(1) {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    text-align: center;
+    background-color: #073EA5;
+    color: white;
+    padding: 10px 0px;
+}
+
+#SlotContainerResult>div {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    text-align: center;
+    padding: 10px 0px;
+    border-bottom: 1px solid skyblue;
+}
+
+#SlotContainerResult>div img {
+    width: 20px;
+    margin: auto;
+    cursor: pointer;
+}
