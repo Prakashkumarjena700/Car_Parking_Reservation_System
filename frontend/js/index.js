@@ -49,3 +49,19 @@ const showBike = () => {
 const slotBook = () => {
     window.location.href = './pages/userDashboard.html'
 }
+const carouselSlide = document.querySelector('.carousel-slide');
+const carouselImages = document.querySelectorAll('.carousel-slide img');
+
+const slideInterval = 2000;
+const slideWidth = carouselImages[0].clientWidth;
+let currentIndex = 0;
+
+function nextSlide() {
+  currentIndex++;
+  if (currentIndex > carouselImages.length - 3) {
+    currentIndex = 0;
+  }
+  carouselSlide.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+}
+
+setInterval(nextSlide, slideInterval);

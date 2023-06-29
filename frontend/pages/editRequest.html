@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/editRequest.css">
+</head>
+
+<body>
+    <div id="loading">
+        <img src="../assets/loading.gif" alt="">
+    </div>
+    <div class="navbarForEdit">
+        <div>
+            <a href="../index.html"><img src="../assets/homeLogo.png" alt=""></a>
+        </div>
+        <div>
+            <a href="./login.html">Login</a>
+            <a href="./register.html">Register</a>
+            <p onclick="gotoDashboard()">Dashboard</p>
+        </div>
+    </div>
+    <div class="editRequet">
+        <h1>Edit my request</h1>
+        <div>
+            <form onsubmit="EtcheckPrice()">
+                <select id="Etplace">
+                    <option value="">Edit requets for</option>
+                    <option value="Mall">Mall</option>
+                    <option value="Hospital">Hospital</option>
+                    <option value="Airport">Airport</option>
+                    <option value="Railway Station">Railway Station</option>
+                </select>
+                <input type="date" id="EtentryDate">
+                <input type="date" id="EtexitDate">
+                <select id="Ettype">
+                    <option value="">Vehicle Type</option>
+                    <option value="2wheeler">2 Wheeler</option>
+                    <option value="4wheeler">4 wheeler</option>
+                </select>
+                <input type="text" placeholder="Vehicle Number" id="EtVehiclenumber">
+                <input type="submit" value="Check Price">
+            </form>
+            <button onclick="editRequestForSlot()">Update request</button>
+
+        </div>
+        <h2>Total Price will : <span>₹</span> <span id="Ettotal">0.00</span> </h2>
+    </div>
+</body>
+<script src="../js/editRequest.js"></script>
+
+</html>

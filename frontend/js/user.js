@@ -27,6 +27,10 @@ const drivingExperience = document.getElementById('drivingExperience')
 const dob = document.getElementById('dob')
 const city = document.getElementById('city')
 const country = document.getElementById('country')
+const userImgPhone = document.getElementById('userImgPhone')
+
+const FilterByStatusUser = document.getElementById('FilterByStatusUser')
+const showAvelableSlots = document.getElementById('showAvelableSlots')
 
 const SlotContainerResult = document.getElementById('SlotContainerResult')
 
@@ -45,11 +49,9 @@ currentSlot.style.display = 'none'
 loading.style.display = 'none'
 
 
-console.log(userDataFromLs)
-
 const userImg = document.getElementById('userImg')
 userImg.src = userDataFromLs.user.avatar
-
+userImgPhone.src = userDataFromLs.user.avatar
 
 const showResult = (option) => {
     if (option === 'userProfile') {
@@ -66,6 +68,7 @@ const showResult = (option) => {
         bookSlot.style.flexDirection = 'column'
     } else if (option === 'history') {
         history.style.display = 'flex'
+        history.style.flexDirection = 'column'
         userProfile.style.display = 'none'
         bookSlot.style.display = 'none'
         currentSlot.style.display = 'none'
@@ -77,7 +80,6 @@ const showResult = (option) => {
         getallRequest()
     }
 }
-
 
 const Logout = () => {
     localStorage.removeItem('loggedInUser')
@@ -210,6 +212,11 @@ const makeRequestForSlot = async () => {
             if (res.sucess) {
                 loading.style.display = 'none'
                 alert('Request sent please wait for conformation')
+                currentSlot.style.display = 'flex'
+                history.style.display = 'none'
+                userProfile.style.display = 'none'
+                bookSlot.style.display = 'none'
+                getallRequest()
             } else {
                 alert('Something went wrong')
             }
@@ -244,6 +251,8 @@ const getallRequest = async () => {
 const appendRequest = (arr) => {
     SlotContainerResult.innerHTML = null
 
+    arr = arr.reverse()
+
     arr.map((ele) => {
         const card = document.createElement('div')
 
@@ -258,13 +267,22 @@ const appendRequest = (arr) => {
              <p>${ele.status}</p>
         `
 
-        const editBtm = document.createElement('img')
-        editBtm.setAttribute('src', '../assets/editLogo.png')
-        editBtm.addEventListener('click', () => {
-            EditSlot(ele._id, ele.status)
+        const editBtn = document.createElement('img')
+        editBtn.setAttribute('src', '../assets/editLogo.png')
+        editBtn.addEventListener('click', () => {
+            EditRequest(ele)
         })
 
-        card.append(editBtm)
+
+        const delBtm = document.createElement('img')
+        delBtm.setAttribute('src', '../assets/tacLogo.png')
+        delBtm.addEventListener('click', () => {
+            deleteRequest(ele._id, ele.status)
+        })
+
+
+
+        card.append(editBtn, delBtm)
         SlotContainerResult.append(card)
     })
 
@@ -274,10 +292,110 @@ const gotoHome = () => {
     window.location.href = '../index.html'
 }
 
-const EditSlot = (id, status) => {
-    if (status === 'pending') {
-        console.log(id, status)
+const deleteRequest = async (id, status) => {
+    if (status == 'pending') {
+        loading.style.display = 'flex'
+
+        await fetch(`${baseApi}/request/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': userDataFromLs.token
+            }
+        }).then(res => res.json())
+            .then(res => {
+                loading.style.display = 'none'
+                console.log(res)
+                getallRequest()
+            })
+            .catch(err => {
+                alert('Request has been delete')
+                loading.style.display = 'none'
+            })
     } else {
-        alert(`Sorry you can only edit your request if it's pending`)
+        alert('You can only cancel your pending request')
+    }
+}
+
+const FilterForuser = async () => {
+    let val = FilterByStatusUser.value
+
+    if (val == '') {
+        getallRequest()
+    } else {
+        loading.style.display = 'flex'
+        await fetch(`${baseApi}/request/${userDataFromLs.user._id}`, {
+            headers: {
+                'Authorization': userDataFromLs.token
+            }
+        }).then(res => res.json())
+            .then(res => {
+                console.log(res)
+
+                const filteredRequest = res && res.filter((ele) => {
+                    return ele.status == val
+                })
+                res && appendRequest(filteredRequest)
+                loading.style.display = 'none'
+            })
+            .catch(err => {
+                loading.style.display = 'none'
+                console.log(err)
+            })
+    }
+
+
+}
+const showParticulatSlot = async (id, place) => {
+    loading.style.display = 'flex'
+    await fetch(`${baseApi}/slot/${id}`, {
+        headers: {
+            'Authorization': userDataFromLs.token
+        }
+    }).then(res => res.json())
+        .then(res => {
+            loading.style.display = 'none'
+            appendParticularSlot(res[0].avelableSlot, place)
+        })
+        .catch(err => {
+            loading.style.display = 'none'
+            alert('Something went wrong')
+            console.log(err)
+        })
+}
+
+const appendParticularSlot = (arr, place) => {
+    showAvelableSlots.innerHTML = null
+
+    if (arr.length == 0) {
+        const placeName = document.createElement('h2')
+        placeName.innerText = place
+
+        const heading = document.createElement('h1')
+
+        heading.innerText = 'Not Available'
+        showAvelableSlots.append(placeName, heading)
+
+    } else {
+        const heading = document.createElement('h2')
+        heading.innerText = place
+
+        const card = document.createElement('div')
+
+        arr.map((ele) => {
+            const slot = document.createElement('p')
+
+            slot.innerText = ele
+            card.append(slot)
+            showAvelableSlots.append(heading, card)
+        })
+    }
+}
+
+const EditRequest = (obj) => {
+    if (obj.status == 'pending') {
+        localStorage.setItem('editObj', JSON.stringify(obj))
+        window.location.href = 'editRequest.html'
+    } else {
+        alert('You can only edit your pending')
     }
 }

@@ -67,3 +67,15 @@ const register = async () => {
 const gotohome = () => {
     window.location.href = '../index.html'
 }
+
+const gotoDashboard = () => {
+    let logger = JSON.parse(localStorage.getItem('loggedInUser')) || { user: 'user' }
+
+    const role = logger.user.role
+
+    if (role == 'admin') {
+        window.location.href = './adminDashboard.html'
+    } else {
+        window.location.href = './userDashboard.html'
+    }
+}

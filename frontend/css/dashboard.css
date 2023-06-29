@@ -38,7 +38,7 @@
     transition: all 700ms;
 }
 
-.dashboardMainContainer>div:nth-child(1) img {
+.dashboardMainContainer>div:nth-child(1)>img {
     width: 80%;
     border: 10px solid white;
     border-radius: 50%;
@@ -82,5 +82,5 @@
         margin-left: 0;
         margin-top: 80px;
     }
-   
+
 }

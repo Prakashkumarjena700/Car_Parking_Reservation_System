@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.navbarForEdit {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    font-weight: 700;
+}
+
+.navbarForEdit a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbarForEdit a:hover {
+    cursor: pointer;
+    color: skyblue;
+    transition: all 700ms;
+}
+
+.navbarForEdit p:hover {
+    color: skyblue;
+    cursor: pointer;
+    transition: all 700ms;
+}
+
+.navbarForEdit img {
+    width: 300px;
+}
+
+.navbarForEdit>div:nth-child(2) {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+#loading {
+    /* border: 1px solid red; */
+    position: absolute;
+    width: 100%;
+    opacity: 0.4;
+    left: 0;
+    right: 0;
+    top: 0;
+    justify-content: center;
+    height: 100%;
+    background-color: #FFFFFF;
+    z-index: 10;
+}
+
+.editRequet>div {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 35%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.editRequet input {
+    width: 100%;
+    height: 35px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.editRequet select {
+    width: 100%;
+    height: 35px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.editRequet input[type='date'] {
+    width: 98%;
+}
+
+.editRequet input[type='submit'] {
+    font-weight: 700;
+    border: none;
+    background-color: #073EA5;
+    color: white;
+    cursor: pointer;
+}
+
+.editRequet input[type='submit']:hover {
+    background-color: white;
+    color: #073EA5;
+    transition: all 700ms;
+    border: 1px solid #073EA5;
+}
+
+.editRequet input[type='text'] {
+    width: 98%;
+}
+
+.editRequet button {
+    width: 100%;
+    height: 35px;
+    font-weight: 700;
+    border: none;
+    background-color: #073EA5;
+    color: white;
+    cursor: pointer;
+}
+
+.editRequet button:hover {
+    background-color: white;
+    color: #073EA5;
+    transition: all 700ms;
+    border: 1px solid #073EA5;
+}
+
+.editRequet h2 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.editRequet span {
+    color: #073EA5;
+}
+
+.editRequet h1 {
+    text-align: center;
+}
+
+@media (max-width:830px) {
+    .editRequet>div {
+        width: 60%;
+    }
+}
+
+@media (max-width:550px) {
+    .navbarForEdit img {
+        width: 200px;
+    }
+
+    .navbarForEdit {
+        font-size: small;
+    }
+
+    .editRequet>div {
+        width: 70%;
+    }
+}
+
+@media (max-width:420px) {
+    .navbarForEdit {
+        font-size: x-small;
+    }
+    .editRequet h1{
+        font-size: large;
+        margin-bottom: 20px;
+    }
+}

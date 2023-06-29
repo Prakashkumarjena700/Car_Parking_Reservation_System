@@ -51,7 +51,7 @@ const login = async () => {
 }
 
 const gotoDashboard = () => {
-    let logger = JSON.parse(localStorage.getItem('loggedInUser'))
+    let logger = JSON.parse(localStorage.getItem('loggedInUser')) || { user: 'user' }
 
     const role = logger.user.role
 

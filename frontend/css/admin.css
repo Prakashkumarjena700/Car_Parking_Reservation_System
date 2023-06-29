@@ -292,6 +292,19 @@
     transition: all 700ms;
 }
 
+.dashboardMainContainer>div:nth-child(1) p {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 10px;
+    /* border: 1px solid gold; */
+}
+
+.dashboardMainContainer>div p img {
+    width: 20px;
+}
+
+
 @media (max-width:830px) {
     #phonAdminOption {
         display: flex;
@@ -329,7 +342,6 @@
     }
 
 }
-
 
 
 @media (max-width:750px) {

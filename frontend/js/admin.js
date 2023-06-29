@@ -187,7 +187,7 @@ const appendRequests = (arr) => {
         const row = document.createElement('div')
 
         row.innerHTML = `
-        <p>${ele.user.slice(1, 5)}...</p>
+        <p>${ele.Vehiclenumber.slice(0, 5)}...</p>
         <p>${ele.type}</p>
         <p>${ele.entryDate}</p>
         <p>${ele.exitDate}</p>
@@ -196,6 +196,7 @@ const appendRequests = (arr) => {
         <p>${ele.status}</p>
       
         `
+        console.log(ele)
         const Compleated = document.createElement('img')
         Compleated.setAttribute('src', '../assets/compleated.png')
         Compleated.addEventListener('click', () => {
@@ -501,6 +502,7 @@ const MakeNewSection = async () => {
                 loading.style.display = 'none'
                 if (res.success) {
                     alert('New section has been added')
+                    
                     newPlace.value = ''
                     newSlotname.value = null
 

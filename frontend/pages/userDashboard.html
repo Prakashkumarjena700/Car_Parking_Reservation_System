@@ -10,17 +10,25 @@
 </head>
 
 <body>
+    <div id="phonAdminOption">
+        <img src="" alt="" id="userImgPhone">
+        <p onclick="showResult('userProfile')">Profile</p>
+        <p onclick="showResult('bookSlot')">Booking</p>
+        <p onclick="showResult('currentSlot')">Slot</p>
+        <!-- <p onclick="showResult('history')"></p> -->
+        <p onclick="Logout()">Logout</p>
+    </div>
     <div id="loading">
         <img src="../assets/loading.gif" alt="">
     </div>
     <div class="dashboardMainContainer">
         <div>
             <img src="" alt="" id="userImg">
-            <p onclick="showResult('userProfile')">Profile</p>
-            <p onclick="showResult('bookSlot')">Book Slot</p>
-            <p onclick="showResult('currentSlot')">Slot</p>
-            <p onclick="showResult('history')">History</p>
-            <p onclick="Logout()">Logout</p>
+            <p onclick="showResult('userProfile')"><span>Profile</span> <img src="../assets/profile.htm" alt=""> </p>
+            <p onclick="showResult('bookSlot')"><span>Booking</span> <img src="../assets/slot.jpg" alt=""></p>
+            <p onclick="showResult('currentSlot')"><span>Slot</span> <img src="../assets/slot.png" alt=""> </p>
+            <p onclick="showResult('history')"><span>Availability</span> <img src="../assets/avelable.png" alt=""> </p>
+            <p onclick="Logout()"><span>Logout</span> <img src="../assets/logout.jpg" alt=""> </p>
         </div>
         <div>
             <div id="userProfile">
@@ -133,6 +141,12 @@
                     <img onclick="gotoHome()" src="../assets/homeLogo.png" alt="">
                     <h2>My Slots</h2>
                 </div>
+                <select id="FilterByStatusUser" onchange="FilterForuser()">
+                    <option value="">Filter By</option>
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="finished">Finished</option>
+                </select>
                 <div id="SlotContainer">
                     <div>
                         <p>Type</p>
@@ -144,15 +158,33 @@
                         <p>Section</p>
                         <p>Status</p>
                         <p>Edit</p>
+                        <p>Cancel</p>
                     </div>
                     <div id="SlotContainerResult">
 
                     </div>
                 </div>
             </div>
-            <div id="history">History</div>
+            <div id="history">
+                <div class="slotIntroLogo">
+                    <img onclick="gotoHome()" src="../assets/homeLogo.png" alt="">
+                    <h2>Slot Avelablity</h2>
+                </div>
+                <div id="optionsForAvelablity">
+                    <p onclick="showParticulatSlot('64965fd6e59a8461f3a85ae0','Mall')">Mall</p>
+                    <p onclick="showParticulatSlot('64967deb187a849555a33eb1','Airport')">Airport</p>
+                    <p onclick="showParticulatSlot('649897f76f9a9c027924db37','Hospital')">Hospital</p>
+                    <p onclick="showParticulatSlot('649898066f9a9c027924db3a','Railway Station')">Railway Station</p>
+                </div>
+                <div id="showAvelableSlots">
+                    <h1>Please select one to see the avelablity</h1>
+                </div>
+            </div>
         </div>
     </div>
+
+
+
 </body>
 <script src="../js/user.js"></script>
 
