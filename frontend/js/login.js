@@ -65,3 +65,13 @@ const gotoDashboard = () => {
 const gotohome = () => {
     window.location.href = '../index.html'
 }
+
+const showPassword = () => {
+    const showPass = document.getElementById('password')
+
+    const showBtn = document.getElementById('showBtn')
+
+    showPass.setAttribute('type', 'text')
+    // showBtn.innerText = 'Hide'
+
+}

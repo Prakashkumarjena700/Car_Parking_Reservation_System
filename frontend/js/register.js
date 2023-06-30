@@ -33,8 +33,10 @@ const register = async () => {
         insuranceNumber
     }
 
-    if (name == '' || email == '' || gender == '' || password == '' || dob == '' || phone == '' || city == '' || country == '' || drivingExperience == '' || insuranceNumber == '') {
-        alert('Please fill all the details')
+
+
+    if (!validatePass) {
+        alert(`Add any special symble and length more then 8`)
     } else {
         loading.style.display = 'flex'
         await fetch(`${baseApi}/user/register`, {
@@ -78,4 +80,32 @@ const gotoDashboard = () => {
     } else {
         window.location.href = './userDashboard.html'
     }
+}
+
+const showPassword = () => {
+    password.setAttribute('type', 'text')
+
+
+}
+
+const validatePass = (str) => {
+    if (str.length < 8) {
+        alert('Please make your password atlist 8 digit or more')
+    } else if (check(str)) {
+        alert('Please add  special chareter')
+    } else {
+        return true
+    }
+}
+
+const check = (str) => {
+    let ans = false
+
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] == '@' || str[i] == '#' || str[i] == '*') {
+            ans = true
+        }
+    }
+    return ans
+
 }

@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="../css/registrationAndLogin.css">
     <link rel="stylesheet" href="../css/home.css">
 </head>
-
 <body>
     <nav class="navbar">
-        <div onclick="gotohome()" >
+        <div onclick="gotohome()">
             <img src="../assets/homeLogo.png" alt="">
         </div>
         <div>
@@ -25,6 +24,7 @@
     <form class="form" onsubmit="login()">
         <h1>Login</h1>
         <input type="email" placeholder="Email" id="email">
+        <span onclick="showPassword()" id="showBtn" style="border: 1px solid blue; cursor: pointer; ">show</span>
         <input type="password" placeholder="Password" id="password">
         <input type="submit" id="sibmit" value="Login">
         <p>Don't have an account ? <a href="./register.html">Register</a> </p>
