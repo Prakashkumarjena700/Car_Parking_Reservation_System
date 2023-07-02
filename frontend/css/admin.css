@@ -13,7 +13,7 @@
     border-radius: 3px;
 }
 
-/* .allRequests p {
+.allRequests p {
     font-weight: 700;
 }
 
@@ -37,7 +37,7 @@
     text-align: center;
     border: 1px solid skyblue;
     padding: 10px 0px;
-} */
+}
 
 #requests>div:nth-child(4) img {
     width: 30px;
